@@ -1,0 +1,28 @@
+<h1>Hellooo Nurse!</h1>
+
+<% if logged_in? %>
+
+    <a href="/users/<%= current_user.id %>">My Profile</a>
+  <p>You're totally logged in Dude</p>
+
+    <a href="/logout"> Logout</a>
+  </p>
+
+<% elsif logged_inr? %>
+<p>You're totally logged in student duder</p>
+<a href="/logoutr"> Logout</a>
+
+<% else %>
+  <p>
+    <a href="/users/new">Sign Up Professor</a>
+  </p>
+  <p>
+    <a href="/session/new">Login professor</a>
+  </p>
+     <p>
+    <a href="/respondents/new">Sign Up Students</a>
+  </p>
+  <p>
+    <a href="/sessionr/new">Login student</a>
+  </p>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Students</h1>
+
+
+<% @respondent.errors.messages.each do |attr, message| %>
+  <p>error on <%= attr %><%= message %></p>
+<% end %>
+
+<%= form_for(@respondent) do |f| %>
+  <%= f.label(:name) %><br>
+  <%= f.text_field(:name) %><br>
+  <%= f.label(:email) %><br>
+  <%= f.text_field(:email) %><br>
+
+  <%= f.label(:password) %><br>
+  <%= f.password_field(:password) %><br>
+  <%= f.label(:password_confirmation) %><br>
+  <%= f.password_field(:password_confirmation) %><br>
+
+  <%= f.label(:university) %><br>
+  <%= f.text_field(:university) %><br>
+  <%= f.label(:address) %><br>
+  <%= f.text_field(:ethnicity) %><br>
+  <%= f.label(:ethnicity) %><br>
+  <%= f.text_field(:major) %><br>
+  <%= f.label(:major) %><br>
+  <%= f.text_field(:gender) %><br>
+  <%= f.label(:gender) %><br>
+  <%= f.text_field(:address) %><br>
+  <%= f.label(:age) %><br>
+  <%= f.number_field(:address) %><br>
+  <%= f.submit %>
+<% end %>
