@@ -7,6 +7,8 @@ gem 'rails', '4.1.0'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.3.5'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -30,6 +32,10 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry-rails', :group => :development
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
+gem "bunny", ">= 1.7.0"
 
 # Use unicorn as the app server
 # gem 'unicorn'
