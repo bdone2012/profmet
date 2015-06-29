@@ -21,6 +21,9 @@ def new
     # @point =
   end
 
+  def show
+  end
+
   def respondent_params
     params.require(:respondent).permit(
       :name,

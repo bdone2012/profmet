@@ -12,18 +12,14 @@ def new
   def create
     @surveylink = Surveylink.new(surveylink_params)
 
-    respond_to do |format|
 
     if @surveylink.save
-      SurveyLinkMailer.welcome_email(@surveylink).deliver
-      format.html { redirect_to(@surveylink, notice: 'Surveylink was successfully created.') }
-      format.json { render json: @surveylink, status: :created, location: @surveylink }
-
+      # Publish post data
+      Publisher.publish("surveylinks", @surveylink.attributes)
+       redirect_to @surveylink, notice: 'Surveylink was successfully created.'
     else
       render :new
-      format.json { render json: @surveylink.errors, status: :unprocessable_entity }
     end
-  end
 end
 
   def update
@@ -31,13 +27,29 @@ end
   end
 
   def show
+  #   require "bunny"
+  #   conn = Bunny.new
+  #   conn.start
+
+  #   ch = conn.create_channel
+
+  #   # get or create queue (note the durable setting)
+  #   queue = ch.queue("dashboard.surveylinks", durable: true)
+
+  # delivery_info, properties, payload = queue.pop
+
+  # conn.close
 
   end
 
   def surveylink_params
     params.require(:surveylink).permit(
       :link,
-      :survey_code
+      :time_estimate,
+      :instruction,
+      :participant,
+      :started,
+      :completed
     )
   end
 

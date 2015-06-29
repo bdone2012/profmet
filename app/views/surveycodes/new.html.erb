@@ -1,0 +1,15 @@
+<h1>Add a Survey Code</h1>
+<% @surveycode.errors.messages.each do |attr, message| %>
+  <p>error on <%= attr %><%= message %></p>
+<% end %>
+
+<%= form_for(@surveycode) do |f| %>
+ <%= f.label(:surveycode) %><br>
+  <%= f.text_field(:surveycode) %><br>
+  <%= f.submit %>
+<% end %>
+
+<h4>Take a survery: <%= @surveylink.id %></h4>
+
+<a href="http://<%= @surveylink.link %>">Go to external survey site</a>
+

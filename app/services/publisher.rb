@@ -5,7 +5,7 @@ class Publisher
   # we will be using JSON-encoded strings
   def self.publish(exchange, message = {})
     # grab the fanout exchange
-    x = channel.fanout("blog.#{exchange}")
+    x = channel.fanout("profmetrics.#{exchange}")
     # and simply publish message
     x.publish(message.to_json)
   end

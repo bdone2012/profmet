@@ -11,6 +11,7 @@
 <% elsif logged_inr? %>
 <p>You're totally logged in student duder</p>
 <a href="/logoutr"> Logout</a>
+<a href="/respondents/<%= current_respondent.id %>">My Profile</a>
 
 <% else %>
   <p>

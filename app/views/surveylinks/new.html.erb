@@ -1,24 +1,3 @@
-<%
-
-require "rubygems"
-require "bunny"
-
-conn = Bunny.new
-conn.start
-
-ch = conn.create_channel
-q  = ch.queue("bunny.examples.hello_world", :auto_delete => true)
-x  = ch.default_exchange
-
-q.subscribe do |delivery_info, metadata, payload|
-  puts "Received #{payload}"
-end
-
-x.publish("Hello!", :routing_key => q.name)
-
-sleep 1.0
-conn.close
-%>
 
 <h1>Make a Survey Link</h1>
 
@@ -27,11 +6,20 @@ conn.close
 <% end %>
 
 <%= form_for(@surveylink) do |f| %>
+ <%= f.label(:instruction) %><br>
+  <%= f.text_field(:instruction) %><br>
   <%= f.label(:link) %><br>
   <%= f.text_field(:link) %><br>
+  <%= f.label(:participant) %><br>
+  <%= f.text_field(:participant) %><br>
+  <%= f.label(:started) %><br>
+  <%= f.text_field(:started) %><br> <%= f.label(:completed) %><br>
+  <%= f.text_field(:completed) %><br>
+
 
 
   <%= f.submit %>
 <% end %>
+
 
 

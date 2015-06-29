@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     current_respondent.present?
   end
 
+
+
 helper_method(:current_user, :logged_in?)
 helper_method(:current_respondent, :logged_inr?)
 
