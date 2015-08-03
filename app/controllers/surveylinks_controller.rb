@@ -12,10 +12,7 @@ def new
   def create
     @surveylink = Surveylink.new(surveylink_params)
 
-
     if @surveylink.save
-      # Publish post data
-      Publisher.publish("surveylinks", @surveylink.attributes)
        redirect_to @surveylink, notice: 'Surveylink was successfully created.'
     else
       render :new
@@ -23,22 +20,10 @@ def new
 end
 
   def update
-    # @point =
+    @surveylink = Surveylink.where("completed > started").first
   end
 
   def show
-  #   require "bunny"
-  #   conn = Bunny.new
-  #   conn.start
-
-  #   ch = conn.create_channel
-
-  #   # get or create queue (note the durable setting)
-  #   queue = ch.queue("dashboard.surveylinks", durable: true)
-
-  # delivery_info, properties, payload = queue.pop
-
-  # conn.close
 
   end
 

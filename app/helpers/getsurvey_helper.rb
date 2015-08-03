@@ -1,0 +1,2 @@
+module GetsurveyHelper
+end

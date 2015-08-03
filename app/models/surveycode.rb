@@ -1,3 +1,3 @@
 class Surveycode < ActiveRecord::Base
-  belongs_to :surveylink
+  # belongs_to :surveylink
 end

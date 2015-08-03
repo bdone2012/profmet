@@ -4,12 +4,23 @@
 <% end %>
 
 <%= form_for(@surveycode) do |f| %>
+<%= f.hidden_field :surveylink_id, :value => @surveylink.id %>
  <%= f.label(:surveycode) %><br>
   <%= f.text_field(:surveycode) %><br>
+<br>
   <%= f.submit %>
 <% end %>
 
+<% if  Surveylink.where("completed > started") != nil %>
 <h4>Take a survery: <%= @surveylink.id %></h4>
 
-<a href="http://<%= @surveylink.link %>">Go to external survey site</a>
 
+
+ <%= form_for(@surveylink) do |f| %>
+            <%= f.hidden_field(:started) %>
+           <%= f.submit %>
+          <% end %>
+
+<% else %>
+<%= "Sorry there are no surveys to be taken at the moment" %>
+<% end %>

@@ -1,0 +1,2 @@
+module SurveyCodesHelper
+end

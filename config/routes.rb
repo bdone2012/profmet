@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :respondents
   resources :surveylinks
   resources :surveycodes
+  resources :surveycodekeys
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -18,5 +19,7 @@ Rails.application.routes.draw do
   get  "/sessionr/new"  => "sessionr#new"
   post "/sessionr"      => "sessionr#create"
   get  "/logoutr"       => "sessionr#destroy"
+
+   post "/surveycode/new"      => "surveylink#update"
 
 end

@@ -5,27 +5,31 @@ class SurveycodesController < ApplicationController
 
 def new
     @surveycode = Surveycode.new
-    @surveylink = Surveylink.where("participant > started").first
-  end
+    # @survey_update = Surveylink.new
+    @surveylink = Surveylink.where("completed > started").first
+    @surveylink.update(started: @surveylink.started + 1)
+end
 
 
   def create
     @surveycode = Surveycode.new(surveycode_params)
-
+    @surveylink = Surveylink.where("completed > started").first
 
     if @surveycode.save
       # Publish post data
-      Publisher.publish("surveycodes", @surveycode.attributes)
-       redirect_to @surveycode, notice: 'Surveycode was successfully created.'
        binding.pry
+       redirect_to @surveycode, notice: 'Surveycode was successfully created.'
+
     else
       render :new
     end
 end
 
   def update
-
-  end
+    # @surveylink = Surveylink.where("completed > started").first
+  #   @surveylink =  Surveylink.where("completed > started").first
+  #   @update_surveylink = @surveylink.update(started: @surveylink.started - 1)
+   end
 
    def show
 
@@ -35,8 +39,10 @@ end
   end
 
   def surveycode_params
+    # binding.pry
     params.require(:surveycode).permit(
-      :surveycode
+      :surveycode,
+      :surveylink_id
     )
   end
 end

@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150627185511) do
 
   create_table "surveycodes", force: true do |t|
     t.string   "surveycode"
+    t.string   "surveylink_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
